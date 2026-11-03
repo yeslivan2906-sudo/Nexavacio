@@ -1,0 +1,11 @@
+{
+  "appId": "com.nexavacio.laberinto",
+  "appName": "Nexavacío",
+  "webDir": "www",
+  "backgroundColor": "#05030c",
+  "android": {
+    "backgroundColor": "#05030c",
+    "allowMixedContent": false,
+    "webContentsDebuggingEnabled": false
+  }
+}
