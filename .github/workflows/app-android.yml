@@ -43,7 +43,13 @@ jobs:
           KS_B64: ${{ secrets.NX_KEYSTORE_BASE64 }}
         run: |
           if [ -z "$KS_B64" ]; then echo "::error::Falta el secret NX_KEYSTORE_BASE64 (mira las instrucciones)"; exit 1; fi
-          echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/nx-upload.keystore"
+          # (se limpian espacios, saltos de línea y comillas que se cuelan al copiar y pegar)
+          printf '%s' "$KS_B64" | tr -cd 'A-Za-z0-9+/=' > "$RUNNER_TEMP/ks.b64"
+          echo "Largo del texto de la llave: $(wc -c < "$RUNNER_TEMP/ks.b64") (debe ser 3720)"
+          base64 -d -i "$RUNNER_TEMP/ks.b64" > "$RUNNER_TEMP/nx-upload.keystore" || { echo "::error::El secret NX_KEYSTORE_BASE64 está incompleto: vuelve a pegar TODO el texto de llave_para_github.txt"; exit 1; }
+          rm -f "$RUNNER_TEMP/ks.b64"
+          SZ=$(wc -c < "$RUNNER_TEMP/nx-upload.keystore"); echo "Tamaño de la llave: $SZ bytes"
+          if [ "$SZ" -lt 1000 ]; then echo "::error::La llave quedó incompleta: vuelve a pegar TODO el texto de llave_para_github.txt"; exit 1; fi
           echo "NX_KEYSTORE_FILE=$RUNNER_TEMP/nx-upload.keystore" >> "$GITHUB_ENV"
 
       - name: Compilar y firmar el .aab
