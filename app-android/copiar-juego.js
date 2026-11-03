@@ -4,6 +4,9 @@ const fs = require('fs'), path = require('path');
 const raiz = path.resolve(__dirname, '..'), www = path.join(__dirname, 'www');
 fs.rmSync(www, { recursive: true, force: true });
 fs.mkdirSync(www, { recursive: true });
+// (la app abre el juego publicado en GitHub Pages: así se actualiza solo, sin pasar por Play Store.
+//  Esta copia queda adentro solo de respaldo, junto con la pantalla "sin internet")
+fs.copyFileSync(path.join(__dirname, 'sin-internet.html'), path.join(www, 'sin-internet.html'));
 const archivos = ['index.html', 'config_nube.js', 'manifest.webmanifest', 'icon-180.png', 'icon-192.png', 'icon-512.png', 'privacidad.html', 'borrar-cuenta.html'];
 for (const f of archivos) {
     const src = path.join(raiz, f);

@@ -3,6 +3,11 @@
   "appName": "Nexavacío",
   "webDir": "www",
   "backgroundColor": "#05030c",
+  "server": {
+    "url": "https://yeslivan2906-sudo.github.io/Nexavacio/",
+    "errorPath": "sin-internet.html",
+    "androidScheme": "https"
+  },
   "android": {
     "backgroundColor": "#05030c",
     "allowMixedContent": false,
