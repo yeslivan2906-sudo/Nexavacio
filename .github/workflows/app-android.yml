@@ -1,0 +1,69 @@
+# Nexavacío · construye la app de Android (.aab) con el juego DENTRO.
+# Se ejecuta a mano: pestaña "Actions" → "App Android (Play Store)" → "Run workflow".
+# Al terminar, el .aab firmado queda para descargar en "Artifacts" y se sube a Play Console.
+name: App Android (Play Store)
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_code:
+        description: 'Número de versión (siempre MAYOR que el último que subiste a Play Console)'
+        required: true
+        default: '10'
+      version_name:
+        description: 'Nombre de la versión (lo que ven los jugadores, ej. 1.1)'
+        required: true
+        default: '1.0'
+
+jobs:
+  aab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Preparar el proyecto
+        working-directory: app-android
+        run: |
+          npm ci --no-audit --no-fund
+          node copiar-juego.js
+          npx cap sync android
+
+      - name: Llave de firma (desde los Secrets)
+        env:
+          KS_B64: ${{ secrets.NX_KEYSTORE_BASE64 }}
+        run: |
+          if [ -z "$KS_B64" ]; then echo "::error::Falta el secret NX_KEYSTORE_BASE64 (mira las instrucciones)"; exit 1; fi
+          echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/nx-upload.keystore"
+          echo "NX_KEYSTORE_FILE=$RUNNER_TEMP/nx-upload.keystore" >> "$GITHUB_ENV"
+
+      - name: Compilar y firmar el .aab
+        working-directory: app-android/android
+        env:
+          NX_KEYSTORE_PASSWORD: ${{ secrets.NX_KEYSTORE_PASSWORD }}
+          NX_KEY_ALIAS: ${{ secrets.NX_KEY_ALIAS }}
+          NX_KEY_PASSWORD: ${{ secrets.NX_KEY_PASSWORD }}
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon bundleRelease -PnxVersionCode=${{ inputs.version_code }} -PnxVersionName=${{ inputs.version_name }}
+
+      - name: Guardar el .aab
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexavacio-${{ inputs.version_name }}-${{ inputs.version_code }}
+          path: app-android/android/app/build/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Borrar la llave del servidor
+        if: always()
+        run: rm -f "$RUNNER_TEMP/nx-upload.keystore"
