@@ -1,0 +1,18 @@
+{
+ "version": "v181",
+ "titulo": "¡Las Islas del Cielo, ahora de verdad en el cielo!",
+ "novedades": [
+  "☁️ Laberinto 11: cielo azul de día con muchas nubes blancas que se mueven bajo los puentes, islas flotantes con roca colgando y rocas que flotan.",
+  "🌀 Remolinos de viento que te llevan volando de una isla a otra, y escaleras de piedra entre islas.",
+  "🧭 Acertijo de las Veletas: ordénalas y el viento soplará las nubes que esconden las 8 plumas doradas.",
+  "🌀 Laberinto 11: Carrera de los Aros de Viento (8 aros contra el reloj) y puentes de nube que se deshacen al pisarlos.",
+  "🕳️ Laberinto 12: el Devorador te persigue; llévalo sobre las 3 Runas de Sello. Y el Ala Reflejada, donde izquierda y derecha están al revés.",
+  "⚔️ Laberinto 13: duelo de iaido contra el Maestro Kenshin. Espera la señal y desenvaina a tiempo.",
+  "🛠️ Arreglado: la pantalla de carga de los laberintos 11, 12 y 13 ya no se queda en negro.",
+  "⛩️ Laberinto 13: Templo de la Luna, casas japonesas, torii, faroles y estatuas de zorro y león. Por la puerta del templo se entra a la Dimensión Espejo."
+ ],
+ "prueba": {
+  "activa": true,
+  "hasta": "2 de diciembre"
+ }
+}
