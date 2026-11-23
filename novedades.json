@@ -1,0 +1,16 @@
+{
+ "version": "v182",
+ "titulo": "¡El Corazón del Vacío renovado!",
+ "novedades": [
+  "🌀 Laberinto 12 con mapa nuevo en espiral: rodeas el vacío por fuera y llegas al Corazón en el centro.",
+  "🌳 Bosque de árboles rojos y secos sobre suelo negro agrietado que brilla en violeta.",
+  "⬛ Prueba nueva: El Suelo que se Borra. Cada losa cae al vacío cuando te bajas; písalas todas para abrir el puente.",
+  "👁️ Enemigos nuevos: Ent Carmesí, Ojo del Vacío, Murciélago de Ceniza, Hueco Errante y Babosa Abisal.",
+  "🛠️ Arreglado: algunos enemigos aparecían con un dibujo genérico hasta que despertaban.",
+  "☁️ Laberinto 11: cielo azul de día con muchas nubes blancas que se mueven."
+ ],
+ "prueba": {
+  "activa": true,
+  "hasta": "2 de diciembre"
+ }
+}
