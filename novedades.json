@@ -1,0 +1,13 @@
+{
+ "version": "v183",
+ "titulo": "Patio de los Shuriken y arreglo del duelo",
+ "novedades": [
+  "🥷 Laberinto 13: nuevo reto, el Patio de los Shuriken. Cruza frente al templo sin que te golpeen los ninjas de las torres (rodar te salva).",
+  "⚔️ Arreglado el duelo con el Maestro Kenshin: ya no se queda la pantalla oscura ni se encima el texto al repetirlo.",
+  "⚔️ El toque con el que hablas a Kenshin ya no cuenta como «¡Te adelantaste!» y hay un poco más de tiempo para reaccionar en celular."
+ ],
+ "prueba": {
+  "activa": true,
+  "hasta": "2 de diciembre"
+ }
+}
