@@ -1,0 +1,13 @@
+{
+ "version": "v188",
+ "titulo": "Arreglo de las monedas",
+ "novedades": [
+  "🟡 Al morir ya no pierdes el 20 % de todas tus monedas: solo una cuarta parte de lo que ganaste en ese intento. Tus ahorros no se tocan.",
+  "🟡 Las monedas ganadas en los laberintos nuevos ya no se recortan al guardar en la nube.",
+  "⚔️ Pruebas y Dimensiones Espejo de los laberintos 13 y 14 más difíciles."
+ ],
+ "prueba": {
+  "activa": true,
+  "hasta": "2 de diciembre"
+ }
+}
