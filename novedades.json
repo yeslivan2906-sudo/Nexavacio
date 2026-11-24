@@ -1,0 +1,13 @@
+{
+ "version": "v186",
+ "titulo": "Arreglo del Jardín de la Luna Roja",
+ "novedades": [
+  "🪞 Laberinto 13, Dimensión Espejo: ahora sí ves a tu reflejo. La cámara se aleja y se pone entre tú y él mientras estás en la sala.",
+  "🪞 Las losas de las 3 parejas se pueden completar (antes el reflejo empezaba desfasado y no coincidía).",
+  "💪 Laberintos 11 a 14 más difíciles (enemigos y jefes con más vida, más rápidos y más patrullas)."
+ ],
+ "prueba": {
+  "activa": true,
+  "hasta": "2 de diciembre"
+ }
+}
